@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-instrumentation-pinecone" %}
-{% set version = "0.49.6" %}
+{% set version = "0.57.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_')}}-{{ version }}.tar.gz
-  sha256: 827f9911f85e467435c8a780a1acf1c83b482433dc00e45ace8b879f92a181fc
+  sha256: 01a827e5d18b5a091489cafa0ca9a6936755850f12cb9a7a6d6d5a9adb3eb0e2
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  skip: true  # [py<39]
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -24,10 +24,11 @@ requirements:
     - opentelemetry-api >=1.38.0,<2.0.0
     - opentelemetry-instrumentation >=0.59b0
     - opentelemetry-semantic-conventions >=0.59b0
-    - opentelemetry-semantic-conventions-ai >=0.4.13,<0.5
+    - opentelemetry-semantic-conventions-ai >=0.5.1,<0.6.0
   run_constrained:
-    - pinecone-client >=5.0.0,<6.0.0
+    - pinecone >=5.1.0,<9.0.0
 
+# Tests/imports require pinecone, not available in main.
 test:
   commands:
     - pip check
@@ -49,5 +50,5 @@ extra:
   recipe-maintainers:
     - timkpaine
   skip-lints:
-    - invalid_url
+    - reachable_url
     - missing_imports_or_run_test_py
