@@ -18,7 +18,7 @@ requirements:
   host:
     - pip
     - python
-    - poetry-core
+    - hatchling
   run:
     - python
     - opentelemetry-api >=1.38.0,<2.0.0
