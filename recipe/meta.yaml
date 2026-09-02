@@ -31,10 +31,10 @@ requirements:
 
 # Tests/imports require pinecone, not available in main.
 test:
-  #commands:
-  #  - pip check
-  #requires:
-  #  - pip
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://www.traceloop.com/openllmetry
